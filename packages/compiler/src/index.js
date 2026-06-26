@@ -38,8 +38,15 @@ export function compile(source) {
     if (trimmed.match(/^\w+\(.*\)\s*\{/) && !trimmed.includes('@')) {
       const funcMatch = trimmed.match(/^(\w+)\(([^)]*)\)\s*\{/)
       if (funcMatch) {
-        result.push('  '.repeat(indent) + `function ${funcMatch[1]}(${funcMatch[2]}) {`)
-        indent++
+        const bodyMatch = trimmed.match(/\{\s*(.+)\s*\}/)
+        if (bodyMatch) {
+          result.push('  '.repeat(indent) + `function ${funcMatch[1]}(${funcMatch[2]}) {`)
+          result.push('  '.repeat(indent + 1) + `return ${bodyMatch[1]};`)
+          result.push('  '.repeat(indent) + '}')
+        } else {
+          result.push('  '.repeat(indent) + `function ${funcMatch[1]}(${funcMatch[2]}) {`)
+          indent++
+        }
         continue
       }
     }
