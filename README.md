@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/simplejs.png" alt="Simple.js" width="120"/>
+  <img src="simplejs.png" alt="Simple.js" width="120"/>
 </p>
 
 <h1 align="center">Simple.js</h1>
