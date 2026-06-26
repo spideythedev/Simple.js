@@ -25,8 +25,8 @@ test('tokenizes keywords', () => {
   assert.equal(tokens[0].type, 'KEYWORD')
   assert.equal(tokens[0].value, 'if')
 
-  assert.equal(tokens[2].type, 'KEYWORD')
-  assert.equal(tokens[2].value, 'true')
+  assert.equal(tokens[1].type, 'KEYWORD')
+  assert.equal(tokens[1].value, 'true')
 })
 
 test('tokenizes strings', () => {
