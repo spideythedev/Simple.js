@@ -1,0 +1,14 @@
+{
+  "name": "@simplejs/runtime",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./dom": "./src/dom.js",
+    "./events": "./src/events.js",
+    "./storage": "./src/storage.js",
+    "./fetch": "./src/fetch.js",
+    "./console": "./src/console.js"
+  }
+}
