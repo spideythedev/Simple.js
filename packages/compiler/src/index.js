@@ -77,7 +77,8 @@ export function compile(source) {
     }
 
     if (trimmed.startsWith('for ') && trimmed.includes(' in ')) {
-      const match = trimmed.match(/for (\w+)(?:, (\w+))? in (.+?):?$/)
+      const cleanLine = trimmed.replace(/:$/, '')
+      const match = cleanLine.match(/for (\w+)(?:, (\w+))? in (.+)/)
       if (match) {
         const item = match[1]
         const index = match[2] || null
