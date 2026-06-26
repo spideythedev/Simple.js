@@ -33,17 +33,19 @@ test('tokenizes keywords', () => {
 })
 
 test('tokenizes strings', () => {
-  const tokens = tokenize('name = "Siva"')
+  const tokens = tokenize('"Siva"')
 
-  assert.equal(tokens[3].type, 'STRING')
-  assert.equal(tokens[3].value, 'Siva')
+  assert.equal(tokens[0].type, 'STRING')
+  assert.equal(tokens[0].value, 'Siva')
+  assert.equal(tokens[1].type, 'EOF')
 })
 
 test('tokenizes numbers', () => {
-  const tokens = tokenize('x = 42')
+  const tokens = tokenize('42')
 
-  assert.equal(tokens[2].type, 'NUMBER')
-  assert.equal(tokens[2].value, 42)
+  assert.equal(tokens[0].type, 'NUMBER')
+  assert.equal(tokens[0].value, 42)
+  assert.equal(tokens[1].type, 'EOF')
 })
 
 test('tokenizes @ operator', () => {
