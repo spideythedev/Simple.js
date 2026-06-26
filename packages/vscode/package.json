@@ -1,0 +1,29 @@
+{
+  "name": "simplejs",
+  "displayName": "Simple.js",
+  "description": "JavaScript, gentle. Syntax highlighting for Simple.js",
+  "version": "0.1.0",
+  "publisher": "simplejs",
+  "icon": "simplejs.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [{
+      "id": "simplejs",
+      "aliases": ["Simple.js", "simplejs"],
+      "extensions": [".sjs"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "simplejs",
+      "scopeName": "source.sjs",
+      "path": "./syntaxes/simplejs.tmLanguage.json"
+    }]
+  },
+  "activationEvents": [
+    "onLanguage:simplejs"
+  ],
+  "main": "./src/extension.js"
+}
