@@ -35,8 +35,8 @@ export function compile(source) {
       }
     }
 
-    if (trimmed.match(/^\w+\(.*\)\s*\{?$/)) {
-      const funcMatch = trimmed.match(/^(\w+)\(([^)]*)\)\s*\{?$/)
+    if (trimmed.match(/^\w+\(.*\)\s*\{/) && !trimmed.includes('@')) {
+      const funcMatch = trimmed.match(/^(\w+)\(([^)]*)\)\s*\{/)
       if (funcMatch) {
         result.push('  '.repeat(indent) + `function ${funcMatch[1]}(${funcMatch[2]}) {`)
         indent++
@@ -82,6 +82,11 @@ export function compile(source) {
 
     if (trimmed.includes('+') && trimmed.includes('"')) {
       result.push('  '.repeat(indent) + `return ${trimmed};`)
+      continue
+    }
+
+    if (trimmed.match(/^\w+\(.*\)$/)) {
+      result.push('  '.repeat(indent) + trimmed + ';')
       continue
     }
 
