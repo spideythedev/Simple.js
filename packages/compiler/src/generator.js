@@ -21,9 +21,7 @@ export function generate(ast) {
       case 'Program':
         node.body.forEach(stmt => {
           walk(stmt)
-          if (stmt.type !== 'IfStatement' && stmt.type !== 'ForStatement' && stmt.type !== 'SafeStatement' && stmt.type !== 'FunctionDeclaration' && stmt.type !== 'ClassStatement') {
-            emit('\n')
-          }
+          emit('\n')
         })
         break
 
@@ -38,7 +36,9 @@ export function generate(ast) {
       case 'IfStatement': {
         emit(`if (${expr(node.test)}) {\n`)
         indentLevel++
-        node.body.body.forEach(stmt => walk(stmt))
+        if (node.body && node.body.body) {
+          node.body.body.forEach(stmt => walk(stmt))
+        }
         indentLevel--
         emitLine('}')
         if (node.else) {
@@ -48,7 +48,9 @@ export function generate(ast) {
           } else {
             emit(' else {\n')
             indentLevel++
-            node.else.body.forEach(stmt => walk(stmt))
+            if (node.else.body) {
+              node.else.body.forEach(stmt => walk(stmt))
+            }
             indentLevel--
             emitLine('}')
           }
@@ -62,13 +64,9 @@ export function generate(ast) {
         const arr = expr(node.iterable)
         emit(`for (let ${iter} of ${arr}) {\n`)
         indentLevel++
-        if (node.indexVar && node.vars.length > 1) {
-          emitLine(`let ${node.vars[1].name} = _index++;`)
+        if (node.body && node.body.body) {
+          node.body.body.forEach(stmt => walk(stmt))
         }
-        if (node.vars.length > 0 && node.vars[0].type === 'Identifier') {
-          emitLine(`let ${node.vars[0].name} = ${iter};`)
-        }
-        node.body.body.forEach(stmt => walk(stmt))
         indentLevel--
         emitLine('}')
         emit('\n')
@@ -82,19 +80,25 @@ export function generate(ast) {
       case 'TransformedSafe': {
         emit(`try {\n`)
         indentLevel++
-        node.body.body.forEach(stmt => walk(stmt))
+        if (node.body && node.body.body) {
+          node.body.body.forEach(stmt => walk(stmt))
+        }
         indentLevel--
         emitLine(`} catch (${node.errorVar}) {`)
         if (node.errorBlock) {
           indentLevel++
-          node.errorBlock.body.forEach(stmt => walk(stmt))
+          if (node.errorBlock.body) {
+            node.errorBlock.body.forEach(stmt => walk(stmt))
+          }
           indentLevel--
         }
         emitLine('}')
         if (node.alwaysBlock) {
           emit('finally {\n')
           indentLevel++
-          node.alwaysBlock.body.forEach(stmt => walk(stmt))
+          if (node.alwaysBlock.body) {
+            node.alwaysBlock.body.forEach(stmt => walk(stmt))
+          }
           indentLevel--
           emitLine('}')
         }
@@ -103,9 +107,7 @@ export function generate(ast) {
       }
 
       case 'ImportStatement': {
-        if (node.names.length === 1 && node.names[0] === 'default') {
-          emitLine(`import ${node.names[0]} from "${node.source}";`)
-        } else if (node.names.length === 1) {
+        if (node.names.length === 1) {
           emitLine(`import { ${node.names[0]} } from "${node.source}";`)
         } else {
           emitLine(`import { ${node.names.join(', ')} } from "${node.source}";`)
@@ -133,7 +135,9 @@ export function generate(ast) {
           if (method.name === 'init') {
             emitLine(`constructor(${method.params.map(p => p.name).join(', ')}) {`)
             indentLevel++
-            method.body.body.forEach(stmt => walk(stmt))
+            if (method.body && method.body.body) {
+              method.body.body.forEach(stmt => walk(stmt))
+            }
             indentLevel--
             emitLine('}')
           } else {
@@ -165,15 +169,17 @@ export function generate(ast) {
         }).join(', ')
         emit(`function ${name}(${params}) {\n`)
         indentLevel++
-        const bodyStmts = node.body.body
-        const lastIndex = bodyStmts.length - 1
-        bodyStmts.forEach((stmt, i) => {
-          if (i === lastIndex && stmt.type !== 'ReturnStatement' && stmt.type !== 'IfStatement' && stmt.type !== 'ForStatement' && stmt.type !== 'SafeStatement') {
-            emitLine(`return ${expr(stmt)};`)
-          } else {
-            walk(stmt)
-          }
-        })
+        if (node.body && node.body.body) {
+          const bodyStmts = node.body.body
+          const lastIndex = bodyStmts.length - 1
+          bodyStmts.forEach((stmt, i) => {
+            if (i === lastIndex && stmt.type !== 'ReturnStatement' && stmt.type !== 'IfStatement' && stmt.type !== 'ForStatement' && stmt.type !== 'SafeStatement') {
+              emitLine(`return ${expr(stmt)};`)
+            } else {
+              walk(stmt)
+            }
+          })
+        }
         indentLevel--
         emitLine('}')
         emit('\n')
@@ -192,12 +198,15 @@ export function generate(ast) {
       case 'TransformedAt': {
         const left = expr(node.left)
         const target = node.target
-        const mapping = {
-          console: `console.${left}`,
-          get: `document.querySelector(${left})`,
-          local: `localStorage.${left}`,
+        if (target === 'console') {
+          emit(`console.${left}`)
+        } else if (target === 'get') {
+          emit(`document.querySelector(${left})`)
+        } else if (target === 'local') {
+          emit(`localStorage.${left}`)
+        } else {
+          emit(`${target}.${left}`)
         }
-        emit(mapping[target] || `${target}.${left}`)
         break
       }
 
