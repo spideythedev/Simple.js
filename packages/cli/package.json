@@ -1,0 +1,12 @@
+{
+  "name": "simplejs",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Simple.js CLI — JavaScript, gentle.",
+  "bin": {
+    "simplejs": "./bin/simplejs.js"
+  },
+  "dependencies": {
+    "@simplejs/compiler": "*"
+  }
+}
