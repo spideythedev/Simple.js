@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple.js Playground</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>◉ Simple.js Playground</h1>
+      <span>JavaScript, gentle.</span>
+    </header>
+    <main>
+      <div class="panel">
+        <div class="panel-header">Simple.js</div>
+        <textarea id="input" spellcheck="false">
+name = "World"
+greet() { "Hello " + name }
+log@console(greet())
+</textarea>
+      </div>
+      <div class="panel">
+        <div class="panel-header">JavaScript Output</div>
+        <textarea id="output" readonly></textarea>
+      </div>
+    </main>
+    <div class="actions">
+      <button id="compile">Compile</button>
+      <button id="run">Run</button>
+      <button id="share">Share</button>
+    </div>
+  </div>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
