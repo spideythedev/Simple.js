@@ -77,11 +77,17 @@ export function compile(source) {
     }
 
     if (trimmed.startsWith('for ') && trimmed.includes(' in ')) {
-      const match = trimmed.match(/for (\w+)(?:, (\w+))? in (.+):/)
+      const match = trimmed.match(/for (\w+)(?:, (\w+))? in (.+?):?$/)
       if (match) {
         const item = match[1]
+        const index = match[2] || null
         const iter = match[3]
-        result.push('  '.repeat(indent) + `for (let ${item} of ${iter}) {`)
+        if (index) {
+          result.push('  '.repeat(indent) + `for (let ${index} = 0; ${index} < ${iter}.length; ${index}++) {`)
+          result.push('  '.repeat(indent + 1) + `let ${item} = ${iter}[${index}];`)
+        } else {
+          result.push('  '.repeat(indent) + `for (let ${item} of ${iter}) {`)
+        }
         indent++
         continue
       }
