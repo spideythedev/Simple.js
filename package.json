@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "simplejs-monorepo",
+  "type": "module",
+  "scripts": {
+    "test": "node --test packages/compiler/test/",
+    "build": "node packages/compiler/src/index.js",
+    "dev": "node packages/cli/src/watch.js"
+  }
+}
