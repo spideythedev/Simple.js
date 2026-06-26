@@ -1,0 +1,54 @@
+{
+  "name": "Simple.js",
+  "scopeName": "source.sjs",
+  "patterns": [
+    {
+      "name": "comment.line.sjs",
+      "match": "//.*$"
+    },
+    {
+      "name": "comment.block.sjs",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    {
+      "name": "keyword.control.sjs",
+      "match": "\\b(if|else|for|in|ret|safe|always|catch|import|export|from|as|all|class|new|init|extends)\\b"
+    },
+    {
+      "name": "constant.language.sjs",
+      "match": "\\b(empty|true|false)\\b"
+    },
+    {
+      "name": "string.quoted.double.sjs",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "string.quoted.single.sjs",
+      "begin": "'",
+      "end": "'"
+    },
+    {
+      "name": "string.template.sjs",
+      "begin": "`",
+      "end": "`"
+    },
+    {
+      "name": "constant.numeric.sjs",
+      "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+    },
+    {
+      "name": "support.function.builtin.sjs",
+      "match": "\\b(log|warn|error|get|text|html|value|show|hide|on|save|load|fetch|post|read|write|remove|clear|addClass|removeClass)@"
+    },
+    {
+      "name": "variable.language.sjs",
+      "match": "\\$\\b"
+    },
+    {
+      "name": "entity.name.function.sjs",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\()"
+    }
+  ]
+}
