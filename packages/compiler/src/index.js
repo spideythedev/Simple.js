@@ -59,10 +59,12 @@ export function compile(source) {
 
     if (trimmed.includes(' = ')) {
       const parts = trimmed.split(' = ')
-      const varName = parts[0].trim()
+      const leftSide = parts[0].trim()
       const allCode = result.join('\n')
+      const isPropertyAccess = leftSide.includes('[') || leftSide.includes('.')
+      const varName = leftSide.split('[')[0].split('.')[0].trim()
       const alreadyDeclared = allCode.includes(`let ${varName} =`) || allCode.includes(`function ${varName}`)
-      const keyword = alreadyDeclared ? '' : 'let '
+      const keyword = (!isPropertyAccess && !alreadyDeclared) ? 'let ' : ''
       result.push('  '.repeat(indent) + `${keyword}${parts[0]} = ${parts[1]};`)
       continue
     }
