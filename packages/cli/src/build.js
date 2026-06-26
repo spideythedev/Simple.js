@@ -1,7 +1,6 @@
 import { compile } from '@simplejs/compiler'
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
-import { resolve, dirname, extname, join } from 'path'
-import { globSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync } from 'fs'
+import { resolve } from 'path'
 
 export function build(input, output) {
   const inputPath = resolve(input)
@@ -14,12 +13,6 @@ export function build(input, output) {
 
   const source = readFileSync(inputPath, 'utf8')
   const js = compile(source)
-  const outDir = dirname(outputPath)
-  
-  if (!existsSync(outDir)) {
-    mkdirSync(outDir, { recursive: true })
-  }
-
   writeFileSync(outputPath, js, 'utf8')
-  console.log(`Compiled: ${input} → ${output}`)
+  console.log(`Compiled: ${input} → ${outputPath}`)
 }
