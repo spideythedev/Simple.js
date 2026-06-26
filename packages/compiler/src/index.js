@@ -59,7 +59,11 @@ export function compile(source) {
 
     if (trimmed.includes(' = ')) {
       const parts = trimmed.split(' = ')
-      result.push('  '.repeat(indent) + `let ${parts[0]} = ${parts[1]};`)
+      const varName = parts[0].trim()
+      const allCode = result.join('\n')
+      const alreadyDeclared = allCode.includes(`let ${varName} =`) || allCode.includes(`function ${varName}`)
+      const keyword = alreadyDeclared ? '' : 'let '
+      result.push('  '.repeat(indent) + `${keyword}${parts[0]} = ${parts[1]};`)
       continue
     }
 
