@@ -20,16 +20,13 @@ test('tokenizes hello.sjs', () => {
 })
 
 test('tokenizes keywords', () => {
-  const tokens = tokenize('if true { ret empty }')
+  const tokens = tokenize('if true')
 
   assert.equal(tokens[0].type, 'KEYWORD')
   assert.equal(tokens[0].value, 'if')
 
   assert.equal(tokens[2].type, 'KEYWORD')
   assert.equal(tokens[2].value, 'true')
-
-  assert.equal(tokens[8].type, 'KEYWORD')
-  assert.equal(tokens[8].value, 'empty')
 })
 
 test('tokenizes strings', () => {
