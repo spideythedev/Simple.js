@@ -129,17 +129,3 @@ export function compileFile(inputPath, outputPath) {
   }
   return js
 }
-
-const args = process.argv.slice(2)
-
-if (args.length >= 1) {
-  const input = args[0]
-  const output = args[1] || input.replace('.sjs', '.js')
-  const js = compileFile(input, output)
-  if (!args[1]) {
-    console.log(js)
-  }
-} else {
-  console.log('Simple.js Compiler')
-  console.log('Usage: node index.js <input.sjs> [output.js]')
-}
