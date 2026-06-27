@@ -9,10 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@spideythedev/simple-js">
-    <img src="https://img.shields.io/npm/v/@spideythedev/simple-js?color=%233B82F6" alt="npm">
+  <a href="https://www.npmjs.com/package/simple-js">
+    <img src="https://img.shields.io/npm/v/simple-js?color=%233B82F6" alt="npm">
   </a>
-  <a href="https://github.com/spideythedev/simple.js/actions">
+  <a href="https://github.com/spideythedev/Simple.js/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/spideythedev/simple.js/publish.yml?color=%2306B6D4" alt="Build">
   </a>
   <a href="LICENSE">
