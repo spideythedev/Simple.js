@@ -1,9 +1,9 @@
 {
-  "name": "simplejs",
+  "name": "simple-js",
   "displayName": "Simple.js",
   "description": "JavaScript, gentle. Syntax highlighting for Simple.js",
   "version": "0.1.0",
-  "publisher": "simplejs",
+  "publisher": "spideythedev",
   "icon": "simplejs.png",
   "engines": {
     "vscode": "^1.85.0"
@@ -25,5 +25,9 @@
   "activationEvents": [
     "onLanguage:simplejs"
   ],
-  "main": "./src/extension.js"
+  "main": "./src/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spideythedev/simple.js"
+  }
 }
