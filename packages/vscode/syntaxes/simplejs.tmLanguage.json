@@ -1,54 +1,85 @@
 {
-  "name": "Simple.js",
+  "name": "Simple.js Quantum",
   "scopeName": "source.sjs",
   "patterns": [
     {
       "name": "comment.line.sjs",
-      "match": "//.*$"
-    },
-    {
-      "name": "comment.block.sjs",
-      "begin": "/\\*",
-      "end": "\\*/"
+      "match": "//.*$",
+      "settings": { "foreground": "#64748B", "fontStyle": "italic" }
     },
     {
       "name": "keyword.control.sjs",
-      "match": "\\b(if|else|for|in|ret|safe|always|catch|import|export|from|as|all|class|new|init|extends)\\b"
+      "match": "\\b(if|else|for|in|ret|safe|always|catch|import|export|from|as|all|class|new|init|extends)\\b",
+      "settings": { "foreground": "#3B82F6", "fontStyle": "bold" }
     },
     {
       "name": "constant.language.sjs",
-      "match": "\\b(empty|true|false)\\b"
+      "match": "\\b(empty|true|false)\\b",
+      "settings": { "foreground": "#8B5CF6" }
+    },
+    {
+      "name": "keyword.operator.logical.sjs",
+      "match": "\\b(and|or|not)\\b",
+      "settings": { "foreground": "#38BDF8", "fontStyle": "bold" }
     },
     {
       "name": "string.quoted.double.sjs",
       "begin": "\"",
-      "end": "\""
+      "end": "\"",
+      "settings": { "foreground": "#F59E0B" }
     },
     {
       "name": "string.quoted.single.sjs",
       "begin": "'",
-      "end": "'"
+      "end": "'",
+      "settings": { "foreground": "#F59E0B" }
     },
     {
       "name": "string.template.sjs",
       "begin": "`",
-      "end": "`"
+      "end": "`",
+      "settings": { "foreground": "#F59E0B" }
     },
     {
       "name": "constant.numeric.sjs",
-      "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+      "match": "\\b[0-9]+(\\.[0-9]+)?\\b",
+      "settings": { "foreground": "#8B5CF6" }
     },
     {
-      "name": "support.function.builtin.sjs",
-      "match": "\\b(log|warn|error|get|text|html|value|show|hide|on|save|load|fetch|post|read|write|remove|clear|addClass|removeClass)@"
+      "name": "support.function.builtin.at.sjs",
+      "match": "(log|warn|error|get|text|html|value|show|hide|on|save|load|fetch|post|read|write|remove|clear|addClass|removeClass)(?=@)",
+      "settings": { "foreground": "#06B6D4", "fontStyle": "bold" }
     },
     {
-      "name": "variable.language.sjs",
-      "match": "\\$\\b"
+      "name": "keyword.operator.at.sjs",
+      "match": "@",
+      "settings": { "foreground": "#06B6D4" }
+    },
+    {
+      "name": "variable.language.this.sjs",
+      "match": "\\$\\b",
+      "settings": { "foreground": "#F43F5E", "fontStyle": "bold" }
     },
     {
       "name": "entity.name.function.sjs",
-      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\()"
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\()",
+      "settings": { "foreground": "#10B981" }
+    },
+    {
+      "name": "variable.other.sjs",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b",
+      "settings": { "foreground": "#F8FAFC" }
+    },
+    {
+      "name": "punctuation.sjs",
+      "match": "[{}\\(\\)\\[\\]]",
+      "settings": { "foreground": "#A78BFA" }
+    },
+    {
+      "name": "keyword.operator.sjs",
+      "match": "[+\\-*/%=<>!.:,]",
+      "settings": { "foreground": "#38BDF8" }
     }
-  ]
+  ],
+  "scopeName": "source.sjs"
 }
