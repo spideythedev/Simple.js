@@ -24,7 +24,7 @@
 
 ## What is Simple.js?
 
-JavaScript takes **4 months** to learn. **Simple.js** takes **1**.
+JavaScript takes **2 months** to learn. **Simple.js** takes **1/2**.
 
 Same power. Same runtime. Cleaner syntax. Compiles directly into standard JavaScript.
 
