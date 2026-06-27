@@ -1,0 +1,22 @@
+name: Publish VS Code Extension
+
+on:
+  push:
+    tags:
+      - 'vscode-*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g @vscode/vsce
+      - run: vsce package
+        working-directory: packages/vscode
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simple-js-vsix
+          path: packages/vscode/*.vsix
