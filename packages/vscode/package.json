@@ -1,7 +1,7 @@
 {
   "name": "simple-js",
   "displayName": "Simple.js",
-  "description": "JavaScript, gentle. Syntax highlighting for Simple.js",
+  "description": "JavaScript, gentle. Quantum syntax highlighting for Simple.js",
   "version": "0.1.0",
   "publisher": "spideythedev",
   "icon": "simplejs.png",
@@ -22,9 +22,7 @@
       "path": "./syntaxes/simplejs.tmLanguage.json"
     }]
   },
-  "activationEvents": [
-    "onLanguage:simplejs"
-  ],
+  "activationEvents": ["onLanguage:simplejs"],
   "main": "./src/extension.js",
   "repository": {
     "type": "git",
