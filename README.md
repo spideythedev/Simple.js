@@ -59,7 +59,7 @@ console.log(greet());
 ### Install
 
 ```bash
-npm install -g @spideythedev/simple-js
+npm install -g simple-js
 
 simple-js init my-app
 
