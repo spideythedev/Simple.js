@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/npm/v/simple-js?color=%233B82F6" alt="npm">
   </a>
   <a href="https://github.com/spideythedev/Simple.js/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/spideythedev/simple.js/publish.yml?color=%2306B6D4" alt="Build">
+    <img src="https://img.shields.io/github/actions/workflow/status/spideythedev/Simple.js/publish.yml?color=%2306B6D4" alt="Build">
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-%238B5CF6" alt="License">
