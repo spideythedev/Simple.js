@@ -1,4 +1,4 @@
-name: Publish Extension
+name: Publish VS Code Extension
 
 on:
   push:
@@ -6,13 +6,19 @@ on:
       - 'vscode-*'
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install -g ovsx
-      - run: ovsx publish -p ${{ secrets.OPENVSX_TOKEN }}
+      - run: npm install -g @vscode/vsce ovsx
+      - run: vsce package
+        working-directory: packages/vscode
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simple-js-vsix
+          path: packages/vscode/*.vsix
+      - run: ovsx publish *.vsix -p ${{ secrets.OPENVSX_TOKEN }}
         working-directory: packages/vscode
