@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/simple-js@0.3.0">
-    <img src="https://img.shields.io/npm/v/simple-js@0.3.0?color=%233B82F6" alt="npm">
+  <a href="https://www.npmjs.com/package//@spideythedev/simple-js">
+    <img src="https://img.shields.io/npm/v/@spideythedev/simple-js?color=%233B82F6" alt="npm">
   </a>
   <a href="https://github.com/spideythedev/Simple.js/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/spideythedev/Simple.js/publish.yml?color=%2306B6D4" alt="Build">
