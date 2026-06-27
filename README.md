@@ -9,9 +9,15 @@
 </p>
 
 <p align="center">
-  <a href="https://simplejs.dev">Website</a> ·
-  <a href="https://playground.simplejs.dev">Playground</a> ·
-  <a href="https://simplejs.dev/docs">Docs</a>
+  <a href="https://www.npmjs.com/package/@spideythedev/simple-js">
+    <img src="https://img.shields.io/npm/v/@spideythedev/simple-js?color=%233B82F6" alt="npm">
+  </a>
+  <a href="https://github.com/spideythedev/simple.js/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/spideythedev/simple.js/publish.yml?color=%2306B6D4" alt="Build">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-%238B5CF6" alt="License">
+  </a>
 </p>
 
 ---
@@ -20,7 +26,7 @@
 
 JavaScript takes **4 months** to learn. **Simple.js** takes **1**.
 
-Same power. Same runtime. Cleaner syntax. Compiles directly to standard JavaScript.
+Same power. Same runtime. Cleaner syntax. Compiles directly into standard JavaScript.
 
 ### Simple.js
 
@@ -37,7 +43,7 @@ log@console(greet())
 ### Compiled JavaScript
 
 ```js
-const name = "World";
+let name = "World";
 
 function greet() {
   return "Hello " + name;
@@ -48,60 +54,196 @@ console.log(greet());
 
 ---
 
-## Why?
-
-| JavaScript | Simple.js |
-|------------|-----------|
-| `const`, `let`, `var` | Just assign with `=` |
-| `function`, `=>` | `name() { }` |
-| `null`, `undefined` | `empty` |
-| `try/catch/finally` | `safe` / `if error` / `always` |
-| `async` / `await` | Automatic |
-| `this` | `$` |
-| `==` and `===` | Just `==` (always strict) |
-
----
-
 ## Quick Start
 
 ### Install
 
 ```bash
-npm install -g simplejs
-simplejs init my-app
+npm install -g @spideythedev/simple-js
+
+simple-js init my-app
+
 cd my-app
-simplejs build
+
+simple-js build app.sjs
+
+node app.js
 ```
 
-### Browser
+---
 
-```html
-<script src="https://cdn.simplejs.dev/simple.min.js"></script>
+## Syntax
 
-<script type="text/simplejs">
-  name = "Siva"
-  log@console("Hello " + name)
-</script>
-```
+| JavaScript | Simple.js |
+|------------|-----------|
+| `const name = "Siva"` | `name = "Siva"` |
+| `function greet() {}` | `greet() {}` |
+| `return value` | `ret value` or last line |
+| `null` / `undefined` | `empty` |
+| `try / catch / finally` | `safe / if error / always` |
+| `async` / `await` | Automatic |
+| `this` | `$` |
+| `===` | `==` (always strict) |
 
 ---
 
 ## The `@` System
 
 ```js
-log@console("Hello")            // Console
+log@console("Hello")            // Console output
 
-text@get("#title"): "Welcome"   // DOM
+text@get("#title"): "Welcome"   // DOM text
 
-on@click("#btn"): handleClick   // Events
+on@click("#btn"): handleClick   // Event listeners
 
-save@local("key", data)         // Storage
+save@local("key", data)         // Local storage
 
-data = fetch@("/api/users")     // Network
+data = fetch@("/api/users")     // Network requests
 ```
+
+---
+
+## Examples
+
+### Hello World
+
+```js
+name = "World"
+
+greet() {
+  "Hello " + name
+}
+
+log@console(greet())
+```
+
+### Counter
+
+```js
+count = 0
+
+increment() {
+  count = count + 1
+  log@console(count)
+}
+
+increment()
+increment()
+```
+
+### Todo
+
+```js
+todos = []
+
+addTodo(text) {
+  todos.push(text)
+  log@console("Added: " + text)
+}
+
+addTodo("Learn Simple.js")
+```
+
+---
+
+## Commands
+
+```bash
+simple-js init my-app
+
+simple-js build app.sjs
+
+simple-js watch app.sjs
+
+simple-js run app.sjs
+```
+
+---
+
+## Features
+
+- Clean, readable syntax
+- Zero runtime overhead
+- Compiles to modern JavaScript
+- Automatic async handling
+- Powerful `@` operator
+- Browser and Node.js support
+- CLI included
+- Fast compiler
+- Lightweight output
+- Beginner-friendly while remaining production-ready
+
+---
+
+## Project Structure
+
+```text
+simple.js/
+├── bin/
+├── compiler/
+├── parser/
+├── lexer/
+├── runtime/
+├── std/
+├── examples/
+├── tests/
+├── docs/
+├── package.json
+├── README.md
+└── LICENSE
+```
+
+---
+
+## Links
+
+- GitHub
+- npm
+- Playground
+- Documentation
+
+---
+
+## Browser Support
+
+| Chrome | Firefox | Safari | Edge |
+|---------|---------|---------|---------|
+| ✅ | ✅ | ✅ | ✅ |
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a pull request.
+
+Please ensure all tests pass before submitting.
+
+---
+
+## Roadmap
+
+- [ ] Language Server (LSP)
+- [ ] VS Code Extension
+- [ ] Playground Improvements
+- [ ] Package Manager
+- [ ] Formatter
+- [ ] REPL
+- [ ] WebAssembly Backend
 
 ---
 
 ## License
 
 MIT © Simple.js
+
+---
+
+<p align="center">
+  <strong>Simple.js</strong><br>
+  <sub>JavaScript, gentle.</sub>
+</p>
