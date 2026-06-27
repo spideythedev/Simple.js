@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/simple-js">
+  <a href="https://www.npmjs.com/package/simple-js@0.3.0">
     <img src="https://img.shields.io/npm/v/simple-js?color=%233B82F6" alt="npm">
   </a>
   <a href="https://github.com/spideythedev/Simple.js/actions">
